@@ -56,7 +56,7 @@ function SearchBox({ query, setQuery }: PropsType) {
         onChange={handleInputChange}
         placeholder='نام شهر'
       />
-      {query.length > 0 && (
+      {query.length > 1 && (
         <ul className='absolute left-0 right-0 z-10 mt-1 bg-white border rounded-lg shadow-lg max-h-80 overflow-y-auto'>
           {!loading && suggestions.length > 0 ? (
             suggestions.map((suggestion) => {
