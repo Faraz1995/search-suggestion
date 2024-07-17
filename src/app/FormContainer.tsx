@@ -2,10 +2,12 @@
 import SearchBox from '@/components/SearchBox'
 import React, { useState } from 'react'
 
-const FormContainer: React.FC = () => {
+function FormContainer() {
+  const [query, setQuery] = useState<string>('')
+
   return (
     <div>
-      <SearchBox />
+      <SearchBox query={query} setQuery={setQuery} />
     </div>
   )
 }
