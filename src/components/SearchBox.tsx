@@ -19,7 +19,6 @@ function SearchBox({ query, setQuery }: PropsType) {
     const fetchSuggestions = async () => {
       if (debouncedQuery.length > 1) {
         try {
-          setLoading(true)
           const query = new URLSearchParams()
           query.append('str', debouncedQuery)
           const response = await axios.get(
@@ -44,6 +43,7 @@ function SearchBox({ query, setQuery }: PropsType) {
   }, [debouncedQuery])
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLoading(true)
     setQuery(event.target.value)
   }
 
@@ -63,10 +63,10 @@ function SearchBox({ query, setQuery }: PropsType) {
               return suggestion.airports.map((airport) => (
                 <div className='p-2 flex justify-between items-center' key={airport.iata}>
                   <div>
-                    <p>فرودگاه {airport.name.fa}</p>
-                    <p>{suggestion.city.country.name.fa}</p>
+                    <p className='text-sm'>فرودگاه {airport.name.fa}</p>
+                    <p className='text-xs'>{suggestion.city.country.name.fa}</p>
                   </div>
-                  <p>{airport.iata}</p>
+                  <p className='text-xs text-[#868686]'>{airport.iata}</p>
                 </div>
               ))
             })
