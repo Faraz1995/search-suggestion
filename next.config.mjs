@@ -1,4 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://hub.tikplan.ir/api/:path*'
+      }
+    ]
+  }
+}
 
-export default nextConfig;
+export default nextConfig
